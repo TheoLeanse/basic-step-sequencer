@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import shortId from 'shortid';
+import uuid from 'shortid';
 
 import './app.css';
 
@@ -9,12 +9,13 @@ import { Slider } from './slider';
 import { Counter } from './counter';
 import { kick, snare, hihat } from './sounds';
 
+const SOUNDS = [kick, snare, hihat];
 const STEP_COUNT = 16;
 const SPEED = 500;
-const STEPS = [...Array(STEP_COUNT)].map(() => shortId());
+const STEPS = [...Array(STEP_COUNT)].map(() => uuid());
 
 const isLastElement = (element, array) =>
-	array.indexOf(element) === array.length;
+	array.indexOf(element) === array.length - 1;
 
 class App extends Component {
 	state = {
@@ -51,6 +52,7 @@ class App extends Component {
 	};
 
 	handleSpeedchange = speed => {
+		// TODO: handle speed change if sequencer is not playing
 		this.stop();
 		this.setSpeed(speed);
 		this.start();
@@ -59,24 +61,14 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Sequencer
-					sound={kick}
-					speed={this.state.speed}
-					steps={this.state.steps}
-					activeStep={this.state.activeStep}
-				/>
-				<Sequencer
-					sound={snare}
-					speed={this.state.speed}
-					steps={this.state.steps}
-					activeStep={this.state.activeStep}
-				/>
-				<Sequencer
-					sound={hihat}
-					speed={this.state.speed}
-					steps={this.state.steps}
-					activeStep={this.state.activeStep}
-				/>
+				{SOUNDS.map(sound => (
+					<Sequencer
+						sound={sound}
+						speed={this.state.speed}
+						steps={this.state.steps}
+						activeStep={this.state.activeStep}
+					/>
+				))}
 				<Counter
 					steps={this.state.steps}
 					activeStep={this.state.activeStep}

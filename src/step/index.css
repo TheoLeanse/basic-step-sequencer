@@ -1,0 +1,7 @@
+.step {
+	border: 1px solid black;
+}
+
+.step.selected {
+	background: papayawhip;
+}
