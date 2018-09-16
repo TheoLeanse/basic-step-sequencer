@@ -14,7 +14,7 @@ export class Slider extends Component {
 					min="0"
 					max="100"
 					defaultValue={this.props.defaultValue}
-					onInput={() => this.props.handleChange(this.value)}
+					onInput={() => this.props.handleInput(this.value)}
 					ref={ref => {
 						if (ref) {
 							this.value = ref.valueAsNumber;
