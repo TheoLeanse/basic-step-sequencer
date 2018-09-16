@@ -1,0 +1,16 @@
+.step {
+	border: 1px solid black;
+	height: 2rem;
+	width: 2rem;
+}
+
+.step.selected {
+	background: papayawhip;
+}
+
+.step-container {
+	display: grid;
+	grid-template-columns: repeat(16, 2rem);
+	grid-template-rows: 2rem;
+	justify-content: space-around;
+}
