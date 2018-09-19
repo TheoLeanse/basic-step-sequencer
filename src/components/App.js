@@ -9,8 +9,6 @@ import { Slider } from './slider';
 import { Counter } from './counter';
 import { kick, snare, hihat } from '../sounds';
 
-const SOUNDS = [kick, snare, hihat];
-
 @observer
 class App extends Component {
 	componentDidMount() {
@@ -18,17 +16,16 @@ class App extends Component {
 	}
 	render() {
 		return (
-			<div>
-				{SOUNDS.map(sound => (
+			<div className="app">
+				{[kick, snare, hihat].map(sound => (
 					<Sequencer
 						sound={sound}
-						steps={SequencerStore.steps}
-						activeStep={SequencerStore.activeStep}
+						activeStep={SequencerStore.activeStep} // need to pass in so the sequencer picks up changes to value
 					/>
 				))}
 				<Counter />
 				<Slider
-					name="speed"
+					name="Speed"
 					defaultValue={SequencerStore.speed}
 					handleInput={SequencerStore.setSpeed}
 				/>

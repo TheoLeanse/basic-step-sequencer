@@ -2,5 +2,6 @@
 	display: grid;
 	grid-template-columns: repeat(16, 2rem);
 	grid-template-rows: 2rem;
-	justify-content: space-around;
+	justify-content: space-between;
+	margin: 1rem 0;
 }

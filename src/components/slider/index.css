@@ -1,3 +1,7 @@
 .slider {
 	direction: rtl;
+	margin: 1rem;
+}
+.slider-label {
+	display: none;
 }
