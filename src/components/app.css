@@ -9,8 +9,12 @@ body {
 	font-weight: 300;
 	margin: 0;
 	padding: 0;
+	perspective: 500px;
 }
 
 .app {
+	transform: rotate3d(1, 1, 1, 50deg);
 	margin: 0 15px;
+	margin-top: 600px;
+	margin-left: 500px;
 }
