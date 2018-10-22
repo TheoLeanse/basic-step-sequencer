@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 import { Step } from '../step';
+import SequencerStore from '../../stores/sequencer-store';
 
 export class Sequencer extends Component {
 	state = {
@@ -33,10 +34,11 @@ export class Sequencer extends Component {
 	render() {
 		return (
 			<div className="step-container">
-				{this.props.steps.map(id => (
+				{SequencerStore.steps.map(id => (
 					<Step
 						key={id}
 						selected={this.isSelectedStep(id)}
+						active={this.isActiveStep(id)}
 						onClick={() => this.handleStepClick(id)}
 					/>
 				))}

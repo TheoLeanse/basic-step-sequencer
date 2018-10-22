@@ -5,7 +5,7 @@ export class Slider extends Component {
 	render() {
 		return (
 			<label htmlFor={this.props.name}>
-				{this.props.name}
+				<span className="slider-label">{this.props.name}</span>
 				<input
 					className="slider"
 					type="range"
@@ -14,7 +14,7 @@ export class Slider extends Component {
 					min="0"
 					max="100"
 					defaultValue={this.props.defaultValue}
-					onInput={() => this.props.handleChange(this.value)}
+					onInput={() => this.props.handleInput(this.value)}
 					ref={ref => {
 						if (ref) {
 							this.value = ref.valueAsNumber;
